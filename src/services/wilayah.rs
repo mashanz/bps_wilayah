@@ -2,6 +2,7 @@ use crate::app_data::AppData;
 use crate::services::struct_wilayah::{Wilayah, WilayahData};
 use actix_web::{web, HttpResponse, Responder};
 use polars::prelude::*;
+use polars::sql::SQLContext;
 
 pub async fn service(path: web::Path<String>, data: web::Data<AppData>) -> impl Responder {
     let path = path.into_inner();
@@ -16,10 +17,15 @@ pub async fn service(path: web::Path<String>, data: web::Data<AppData>) -> impl 
         }],
     };
 
-    let df = data.data.clone().lazy();
-    let filtered = df.filter(col("kode_bps"));
+    let df = data.data.clone();
+    let mut ctx = SQLContext::new();
+    ctx.register("df", df.lazy());
+    let filtered = ctx
+        .execute("SELECT * FROM df WHERE kode_bps = '11'")
+        .unwrap()
+        .collect();
 
-    // Materialize the LazyFrame to see the resulting DataFrame
-    let result_df = filtered.collect();
+    println!("{:?}", filtered);
+
     HttpResponse::Ok().json(obj)
 }

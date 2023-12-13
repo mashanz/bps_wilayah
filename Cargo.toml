@@ -1,0 +1,33 @@
+[package]
+name = "bps_wilayah_api"
+version = "0.1.0"
+edition = "2021"
+default-run = "bps_wilayah_api"
+autobins = false
+rust-version = "1.74.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "bps_wilayah_api"
+
+[dependencies]
+actix-web = "4"
+polars = { version = "0.35.4", features = ["lazy"] }
+
+[profile.dev]
+split-debuginfo = "unpacked"
+
+[profile.dev.build-override]
+opt-level = 3
+
+[profile.release]
+panic = "unwind"  # Strip expensive panic clean-up logic
+codegen-units = 1 # Compile crates one after another so the compiler can optimize better
+lto = true        # Enables link to optimizations
+opt-level = "s"   # Optimize for binary size
+strip = true      # Remove debug symbols

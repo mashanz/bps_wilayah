@@ -33,6 +33,7 @@ async fn main() -> std::io::Result<()> {
             .route("/hey", web::get().to(manual_hello))
             .service(services::service())
     })
+    .workers(1)
     .bind(("0.0.0.0", 8080))?
     .run()
     .await

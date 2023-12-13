@@ -17,7 +17,7 @@ name = "bps_wilayah_api"
 
 [dependencies]
 actix-web = "4"
-polars = { version = "0.35.4", features = ["lazy"] }
+polars = { version = "0.35.4", features = ["lazy", "dtype-categorical"] }
 
 [profile.dev]
 split-debuginfo = "unpacked"

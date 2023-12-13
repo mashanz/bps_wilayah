@@ -20,5 +20,6 @@ WORKDIR /app
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
 COPY --from=builder /app/target/release/bps_wilayah_api ./
+COPY --from=builder /app/data.csv ./
 EXPOSE 8080
 CMD ["./bps_wilayah_api"]

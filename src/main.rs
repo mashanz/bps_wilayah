@@ -8,7 +8,7 @@ use std::sync::Arc;
 
 fn read_data() -> PolarsResult<DataFrame> {
     let mut schema = Schema::new();
-    schema.with_column("kode_bps".into(), DataType::Categorical(None));
+    schema.with_column("kode_bps".into(), DataType::Utf8);
     schema.with_column("nama_bps".into(), DataType::Categorical(None));
     schema.with_column("kode_dagri".into(), DataType::Categorical(None));
     schema.with_column("nama_dagri".into(), DataType::Categorical(None));

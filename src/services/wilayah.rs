@@ -21,7 +21,7 @@ pub async fn service(path: web::Path<String>, data: web::Data<AppData>) -> impl 
     let mut ctx = SQLContext::new();
     ctx.register("df", df.lazy());
     let filtered = ctx
-        .execute("SELECT * FROM df WHERE kode_bps = '11'")
+        .execute("SELECT * FROM df WHERE length(kode_bps) = 2 AND STARTS_WITH(kode_bps, '1')")
         .unwrap()
         .collect();
 

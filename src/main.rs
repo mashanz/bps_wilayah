@@ -1,5 +1,6 @@
 pub mod app_data;
 pub mod services;
+pub mod utility;
 
 use crate::app_data::AppData;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};

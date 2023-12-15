@@ -12,10 +12,6 @@ pub async fn service(
 ) -> impl Responder {
     let path = path.into_inner();
     let source_type = path.0;
-    let provinsi_id = path.1;
-    println!("{:?}", source_type);
-    println!("{:?}", provinsi_id);
-    println!("{:?}", data.data);
 
     let df = data.data.clone();
     let mut ctx = SQLContext::new();
@@ -24,7 +20,7 @@ pub async fn service(
         .execute(
             format!(
                 "SELECT * FROM df WHERE length(kode_bps) = 4 AND STARTS_WITH(kode_bps, '{}')",
-                provinsi_id.to_string()
+                path.1
             )
             .as_str(),
         )

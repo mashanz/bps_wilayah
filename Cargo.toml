@@ -16,6 +16,7 @@ path = "src/main.rs"
 name = "bps_wilayah_api"
 
 [dependencies]
+actix-cors = "0.6.5"
 actix-web = "4"
 polars = { version = "0.35.4", features = [
     "lazy",

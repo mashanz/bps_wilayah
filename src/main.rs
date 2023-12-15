@@ -1,3 +1,4 @@
+use actix_cors::Cors;
 pub mod app_data;
 pub mod services;
 pub mod utility;
@@ -25,6 +26,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         let df = read_data().unwrap();
         App::new()
+            .wrap(Cors::permissive())
             .app_data(web::Data::new(AppData { data: df }))
             .service(services::service())
     })

@@ -31,3 +31,7 @@ someapi.com/wilayah/<type>/<provinsi_id>/<kabkota_id>
 
 someapi.com/wilayah/<type>/<provinsi_id>/<kabkota_id>/<kecamatan_id>
 ```
+
+# Example Usage
+
+`sompeapi.com/wilayah/bps/32/01/001/010`

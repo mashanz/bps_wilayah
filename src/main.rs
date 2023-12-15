@@ -28,7 +28,6 @@ async fn main() -> std::io::Result<()> {
             .app_data(web::Data::new(AppData { data: df }))
             .service(services::service())
     })
-    .workers(1)
     .bind(("0.0.0.0", 8080))?
     .run()
     .await

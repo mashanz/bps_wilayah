@@ -1,3 +1,4 @@
+pub mod deserialize;
 pub mod struct_wilayah;
 pub mod wilayah;
 pub mod wilayah_desa;

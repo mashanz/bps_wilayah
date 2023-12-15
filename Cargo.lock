@@ -367,7 +367,6 @@ dependencies = [
  "actix-cors",
  "actix-web",
  "polars",
- "polars-json",
  "serde",
  "serde_json",
 ]

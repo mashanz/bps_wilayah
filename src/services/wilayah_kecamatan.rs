@@ -4,6 +4,7 @@ use crate::utility::rem_first_and_last;
 use actix_web::{web, HttpResponse, Responder};
 use polars::prelude::*;
 use polars::sql::SQLContext;
+use serde_json::json;
 
 pub async fn service(
     path: web::Path<(String, String, String, String)>,

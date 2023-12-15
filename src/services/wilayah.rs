@@ -1,5 +1,3 @@
-use std::vec;
-
 use crate::app_data::AppData;
 use crate::services::struct_wilayah::WilayahData;
 use crate::utility::rem_first_and_last;
